@@ -2,7 +2,7 @@
 
 <div class="dashboard-main-body">
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-        <h6 class="fw-semibold mb-0">Basic Table</h6>
+        <h6 class="fw-semibold mb-0"> Table Students</h6>
         <ul class="d-flex align-items-center gap-2">
             <li class="fw-medium">
                 <a href="index.php" class="d-flex align-items-center gap-1 hover-text-primary">
@@ -11,13 +11,13 @@
                 </a>
             </li>
             <li>-</li>
-            <li class="fw-medium">Basic Table</li>
+            <li class="fw-medium"> Table Students</li>
         </ul>
     </div>
 
     <div class="card basic-data-table">
         <div class="card-header">
-            <h5 class="card-title mb-0">Default Datatables</h5>
+            <h5 class="card-title mb-0"> Datatables</h5>
         </div>
         <div class="card-body">
             <table class="table table-bordered mb-0" id="dataTable" data-page-length="10">
@@ -32,32 +32,32 @@
                             </div>
                         </th>
                         <th scope="col">NIM</th>
+                        <th scope="col">EMAIL</th>
                         <th scope="col">NAMA</th>
-                        <th scope="col">USERNAME</th>
-                        <th scope="col">ROLE</th>
-                        <th scope="col">TANGGAL</th>
+                        <th scope="col">NO. HP</th>
+                        <th scope="col">TGL</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($users as $user)
+                    @forelse ($datas as $data)
                         <tr>
                             <td>
                                 <div class="form-check style-check d-flex align-items-center">
-                                    <input class="form-check-input" type="checkbox" id=user{{ $user->id }}">
+                                    <input class="form-check-input" type="checkbox" id=user{{ $data->id }}">
                                     <label class="form-check-label"
-                                        for="event{{ $user->id }}">{{ $loop->iteration }}</label>
+                                        for="event{{ $data->id }}">{{ $loop->iteration }}</label>
                                 </div>
                             </td>
-                            <td><a href="javascript:void(0)" class="text-primary-600">{{ $user->nim }}</a></td>
-                            <td><a href="javascript:void(0)" class="text-black-600">{{ $user->name }}</a></td>
-                            <td><a href="javascript:void(0)" class="text-black-600">{{ $user->username }}</a></td>
-                            <td><a href="javascript:void(0)" class="text-black-600">{{ $user->role }}</a></td>
-                            <td class="text-warning-600">{{ \Carbon\Carbon::parse($user->created_at)->format('d M Y') }}
+                            <td><a href="javascript:void(0)" class="text-primary-600">{{ $data->nim }}</a></td>
+                            <td><a href="javascript:void(0)" class="text-black-600">{{ $data->email }}</a></td>
+                            <td><a href="javascript:void(0)" class="text-black-600">{{ $data->name }}</a></td>
+                            <td><a href="javascript:void(0)" class="text-black-600">{{ $data->phone }}</a></td>
+                            <td class="text-warning-600">{{ \Carbon\Carbon::parse($data->created_at)->format('d M Y') }}
                             </td>
                             <td>
 
-                                <a href="{{ route('user.edit', $user->id) }}"
+                                <a href="{{ route('student.edit', $data->id) }}"
                                     class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center"
                                     title="Edit">
                                     <iconify-icon icon="lucide:edit"></iconify-icon>
@@ -65,7 +65,7 @@
                                 <!-- Delete Icon - Confirm Before Deleting -->
                                 <a href="javascript:void(0)"
                                     class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center"
-                                    onclick="confirmDelete({{ $user->id }})" title="Delete">
+                                    onclick="confirmDelete({{ $data->id }})" title="Delete">
                                     <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                                 </a>
                             </td>
@@ -103,7 +103,7 @@
                 if (result.isConfirmed) {
                     // Perform the AJAX delete request
                     $.ajax({
-                        url: '/admin/user/destroy/' + userId, // URL of the delete route
+                        url: '/admin/student/destroy/' + userId, // URL of the delete route
                         type: 'POST', // Using the POST method (because we are submitting a form with method spoofing)
                         data: {
                             _method: 'DELETE', // This is the method spoofing for DELETE

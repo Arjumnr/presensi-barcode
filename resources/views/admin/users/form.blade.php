@@ -1,5 +1,7 @@
 @include('admin.partials.layouts.layoutTop')
-
+{{-- @php
+dd ($user);
+@endphp --}}
 <div class="dashboard-main-body">
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
         <h6 class="fw-semibold mb-0">{{ isset($user) ? 'Edit user' : 'Add user' }}</h6>

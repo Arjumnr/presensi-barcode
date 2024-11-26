@@ -34,6 +34,57 @@
                     </li>
                 </ul>
             </li>
+
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
+                    <span>Students</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('student.list') }}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            Students List</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('student.create') }}"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> Add
+                            Students</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
+                    <span>Absence</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('absence.list') }}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            Absence List</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('absence.create') }}"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> Add
+                            Absence</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
+                    <span>Barcode</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('barcode.list') }}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            Barcode List</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('barcode.create') }}"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> Add
+                            Barcode</a>
+                    </li>
+                </ul>
+            </li>
             {{-- <li class="dropdown">
                 <a href="javascript:void(0)">
                     <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>

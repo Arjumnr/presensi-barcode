@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('/admin');
+    return redirect('/admin/dashboard');
 });
 
 //auth
@@ -34,13 +34,12 @@ Route::group(['prefix' => 'admin',  'namespace' => 'App\Http\Controllers',  'mid
     
 
     Route::group(['prefix' => 'student'], function () {
-        Route::get('/', 'App\Http\Controllers\AuthController@index')->name('student.index');
-        Route::get('/data', 'App\Http\Controllers\AuthController@data')->name('student.data');
-        Route::get('/create', 'App\Http\Controllers\AuthController@create')->name('student.create');
-        Route::post('/store', 'App\Http\Controllers\AuthController@store')->name('student.store');
-        Route::get('/edit/{id}', 'App\Http\Controllers\AuthController@edit')->name('student.edit');
-        Route::put('/update/{id}', 'App\Http\Controllers\AuthController@update')->name('student.update');
-        Route::delete('/destroy/{id}', 'App\Http\Controllers\AuthController@destroy')->name('student.destroy');
+        Route::get('/', 'App\Http\Controllers\StudentController@index')->name('student.list');
+        Route::get('/create', 'App\Http\Controllers\StudentController@create')->name('student.create');
+        Route::post('/store', 'App\Http\Controllers\StudentController@store')->name('student.store');
+        Route::get('/edit/{id}', 'App\Http\Controllers\StudentController@edit')->name('student.edit');
+        Route::put('/update/{id}', 'App\Http\Controllers\StudentController@update')->name('student.update');
+        Route::delete('/destroy/{id}', 'App\Http\Controllers\StudentController@destroy')->name('student.destroy');
     });
 
     Route::group(['prefix' => 'user'], function () {
@@ -51,6 +50,27 @@ Route::group(['prefix' => 'admin',  'namespace' => 'App\Http\Controllers',  'mid
         Route::get('/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('user.edit');
         Route::put('/update/{id}', 'App\Http\Controllers\UserController@update')->name('user.update');
         Route::delete('/destroy/{id}', 'App\Http\Controllers\UserController@destroy')->name('user.destroy');
+    });
+
+
+    Route::group(['prefix' => 'absence'], function () {
+        Route::get('/', 'App\Http\Controllers\AbsenceController@index')->name('absence.list');
+        Route::get('/data', 'App\Http\Controllers\AbsenceController@data')->name('absence.data');
+        Route::get('/create', 'App\Http\Controllers\AbsenceController@create')->name('absence.create');
+        Route::post('/store', 'App\Http\Controllers\AbsenceController@store')->name('absence.store');
+        Route::get('/edit/{id}', 'App\Http\Controllers\AbsenceController@edit')->name('absence.edit');
+        Route::put('/update/{id}', 'App\Http\Controllers\AbsenceController@update')->name('absence.update');
+        Route::delete('/destroy/{id}', 'App\Http\Controllers\AbsenceController@destroy')->name('absence.destroy');
+    });
+
+    Route::group(['prefix' => 'barcode'], function () {
+        Route::get('/', 'App\Http\Controllers\AbsenceController@index')->name('barcode.list');
+        Route::get('/data', 'App\Http\Controllers\AbsenceController@data')->name('barcode.data');
+        Route::get('/create', 'App\Http\Controllers\AbsenceController@create')->name('barcode.create');
+        Route::post('/store', 'App\Http\Controllers\AbsenceController@store')->name('barcode.store');
+        Route::get('/edit/{id}', 'App\Http\Controllers\AbsenceController@edit')->name('barcode.edit');
+        Route::put('/update/{id}', 'App\Http\Controllers\AbsenceController@update')->name('barcode.update');
+        Route::delete('/destroy/{id}', 'App\Http\Controllers\AbsenceController@destroy')->name('barcode.destroy');
     });
 
     // setting

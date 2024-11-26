@@ -17,8 +17,6 @@ class UserController extends Controller
         return view('admin.users.index', compact('users'));
     }
 
-
-
     public function create(){
         return view('admin.users.form');
     }
@@ -47,25 +45,33 @@ class UserController extends Controller
     }
 
     public function edit($id){
-        $event = User::find($id);
-        return view('admin.users.form', compact('event'));
+        $user = User::find($id);
+        return view('admin.users.form', compact('user'));
     }
 
     public function update(Request $request, $id){
-        $event = User::find($id);
-        $event->name_event = $request->nama_event;
-        $event->date_event = $request->tgl_event;
-        $event->save();
-        return redirect()->route('event.index')->with('success', 'Event updated successfully');
+        $user = User::find($id);
+        $user->nim = $request->nim;
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->status = $request->status;
+
+        $pw = $request->password;
+        if ($pw) {
+            $user->password = Hash::make($pw);
+        }
+
+        $user->save();
+        return redirect()->route('user.list')->with('success', 'Event updated successfully');
     }
 
     public function destroy($id){
-       $event = User::find($id);
-        if ($event) {
-            $event->delete();
-            return redirect()->route('event.index')->with('success', 'Event has been deleted successfully');
+       $user = User::find($id);
+        if ($user) {
+            $user->delete();
+            return redirect()->route('user.list')->with('success', 'User has been deleted successfully');
         } else {
-            return redirect()->route('event.index')->with('error', 'Event not found');
+            return redirect()->route('user.list')->with('error', 'User not found');
         }
     }
 }
