@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('session_timetable', function (Blueprint $table) {
             $table->id();
             $table->string('matkul');
-            $table->string('day');
+            $table->date('date_session');
             $table->time('start_time');
             $table->time('end_time');
             $table->timestamps();

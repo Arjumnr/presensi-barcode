@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('list_present', function (Blueprint $table) {
             $table->id();
-            $table->string('id_student');
+            $table->string('id_user');
             $table->string('id_timetable');
+            $table->date('scanned_at');
             $table->timestamps();
             
         });

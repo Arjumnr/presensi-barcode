@@ -44,7 +44,6 @@ Route::group(['prefix' => 'admin',  'namespace' => 'App\Http\Controllers',  'mid
 
     Route::group(['prefix' => 'user'], function () {
         Route::get('/', 'App\Http\Controllers\UserController@index')->name('user.list');
-        Route::get('/data', 'App\Http\Controllers\UserController@data')->name('user.data');
         Route::get('/create', 'App\Http\Controllers\UserController@create')->name('user.create');
         Route::post('/store', 'App\Http\Controllers\UserController@store')->name('user.store');
         Route::get('/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('user.edit');
@@ -55,7 +54,6 @@ Route::group(['prefix' => 'admin',  'namespace' => 'App\Http\Controllers',  'mid
 
     Route::group(['prefix' => 'absence'], function () {
         Route::get('/', 'App\Http\Controllers\AbsenceController@index')->name('absence.list');
-        Route::get('/data', 'App\Http\Controllers\AbsenceController@data')->name('absence.data');
         Route::get('/create', 'App\Http\Controllers\AbsenceController@create')->name('absence.create');
         Route::post('/store', 'App\Http\Controllers\AbsenceController@store')->name('absence.store');
         Route::get('/edit/{id}', 'App\Http\Controllers\AbsenceController@edit')->name('absence.edit');
@@ -63,14 +61,22 @@ Route::group(['prefix' => 'admin',  'namespace' => 'App\Http\Controllers',  'mid
         Route::delete('/destroy/{id}', 'App\Http\Controllers\AbsenceController@destroy')->name('absence.destroy');
     });
 
-    Route::group(['prefix' => 'barcode'], function () {
-        Route::get('/', 'App\Http\Controllers\AbsenceController@index')->name('barcode.list');
-        Route::get('/data', 'App\Http\Controllers\AbsenceController@data')->name('barcode.data');
-        Route::get('/create', 'App\Http\Controllers\AbsenceController@create')->name('barcode.create');
-        Route::post('/store', 'App\Http\Controllers\AbsenceController@store')->name('barcode.store');
-        Route::get('/edit/{id}', 'App\Http\Controllers\AbsenceController@edit')->name('barcode.edit');
-        Route::put('/update/{id}', 'App\Http\Controllers\AbsenceController@update')->name('barcode.update');
-        Route::delete('/destroy/{id}', 'App\Http\Controllers\AbsenceController@destroy')->name('barcode.destroy');
+    Route::group(['prefix' => 'qrcode'], function () {
+        Route::get('/', 'App\Http\Controllers\QrcodeController@index')->name('qrcode.list');
+        Route::get('/create', 'App\Http\Controllers\QrcodeController@create')->name('qrcode.create');
+        Route::post('/store', 'App\Http\Controllers\QrcodeController@store')->name('qrcode.store');
+        Route::get('/show/{id}', 'App\Http\Controllers\QrcodeController@show')->name('qrcode.show');
+        Route::put('/update/{id}', 'App\Http\Controllers\QrcodeController@update')->name('qrcode.update');
+        Route::delete('/destroy/{id}', 'App\Http\Controllers\QrcodeController@destroy')->name('qrcode.destroy');
+    });
+
+    Route::group(['prefix' => 'time-table'], function () {
+        Route::get('/', 'App\Http\Controllers\TimeTableController@index')->name('time-table.list');
+        Route::get('/create', 'App\Http\Controllers\TimeTableController@create')->name('time-table.create');
+        Route::post('/store', 'App\Http\Controllers\TimeTableController@store')->name('time-table.store');
+        Route::get('/show/{id}', 'App\Http\Controllers\TimeTableController@show')->name('time-table.show');
+        Route::put('/update/{id}', 'App\Http\Controllers\TimeTableController@update')->name('time-table.update');
+        Route::delete('/destroy/{id}', 'App\Http\Controllers\TimeTableController@destroy')->name('time-table.destroy');
     });
 
     // setting
@@ -89,3 +95,17 @@ Route::get('/cc', function() {
     Artisan::call('view:clear');
     return 'Cache is cleared';
 });
+
+Route::get('t', fn () => phpinfo());
+
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+// Route::get('qr-code', function () {
+//     // Generate QR Code dalam format PNG
+//     $qrCode = QrCode::format('png') // Pastikan format adalah PNG
+//                     ->size(200)     // Ukuran QR Code
+//                     ->generate('Webappfix.com'); // Data QR Code
+
+//     // Kembalikan QR Code sebagai respons dengan header yang sesuai
+//     return response($qrCode)
+//             ->header('Content-Type', 'image/png');
+// });

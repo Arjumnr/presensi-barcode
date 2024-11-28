@@ -1,9 +1,8 @@
 @include('admin.partials.layouts.layoutTop')
 
 <div class="dashboard-main-body">
-
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-        <h6 class="fw-semibold mb-0">{{ isset($datas) ? 'Edit Students' : 'Add Students' }}</h6>
+        <h6 class="fw-semibold mb-0">{{ isset($datas) ? 'Edit Time Table' : 'Add Time Table' }}</h6>
         <ul class="d-flex align-items-center gap-2">
             <li class="fw-medium">
                 <a href="{{ route('dashboard') }}" class="d-flex align-items-center gap-1 hover-text-primary">
@@ -12,7 +11,7 @@
                 </a>
             </li>
             <li>-</li>
-            <li class="fw-medium">{{ isset($datas) ? 'Edit Students' : 'Add Students' }}</li>
+            <li class="fw-medium">{{ isset($datas) ? 'Edit Time Table' : 'Add Time Table' }}</li>
         </ul>
     </div>
 
@@ -23,7 +22,7 @@
                     <div class="card border">
                         <div class="card-body">
                             <form
-                                action="{{ isset($datas) ? route('student.update', $datas->id) : route('student.store') }}"
+                                action="{{ isset($datas) ? route('time-table.update', $datas->id) : route('time-table.store') }}"
                                 method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @if (isset($datas))
@@ -31,35 +30,35 @@
                                 @endif
 
                                 <div class="mb-20">
-                                    <label for="nim"
-                                        class="form-label fw-semibold text-primary-light text-sm mb-8">NIM<span
+                                    <label for="matkul"
+                                        class="form-label fw-semibold text-primary-light text-sm mb-8">Mata Kuliah<span
                                             class="text-danger-600">*</span></label>
-                                    <input type="number" class="form-control radius-8" id="nim" name="nim"
-                                        value="{{ isset($datas) ? $datas->nim : '' }}" placeholder="input NIM...">
+                                    <input type="text" class="form-control radius-8" id="matkul" name="matkul"
+                                        value="{{ isset($datas) ? $datas->matkul : '' }}" placeholder="input Mata Kuliah...">
                                 </div>
 
                                 <div class="mb-20">
-                                    <label for="email"
-                                        class="form-label fw-semibold text-primary-light text-sm mb-8">Email<span
+                                    <label for="date_session"
+                                        class="form-label fw-semibold text-primary-light text-sm mb-8">Tanggal Pelaksanaan<span
                                             class="text-danger-600">*</span></label>
-                                    <input type="email" class="form-control radius-8" id="email" name="email"
-                                        value="{{ isset($datas) ? $datas->email : '' }}" placeholder="input Email...">
+                                    <input type="date" class="form-control radius-8" id="date_session" name="date_session"
+                                        value="{{ isset($datas) ? $datas->date_session : '' }}" placeholder="input Tanggal Pelaksanaan...">
                                 </div>
 
                                 <div class="mb-20">
-                                    <label for="name"
-                                        class="form-label fw-semibold text-primary-light text-sm mb-8">Name<span
+                                    <label for="start_time"
+                                        class="form-label fw-semibold text-primary-light text-sm mb-8">Waktu Mulai<span
                                             class="text-danger-600">*</span></label>
-                                    <input type="text" class="form-control radius-8" id="name" name="name"
-                                        value="{{ isset($datas) ? $datas->name : '' }}" placeholder="input Name...">
+                                    <input type="time" class="form-control radius-8" id="start_time" name="start_time"
+                                        value="{{ isset($datas) ? $datas->start_time : '' }}" placeholder="input Waktu Mulai...">
                                 </div>
 
                                 <div class="mb-20">
-                                    <label for="phone"
-                                        class="form-label fw-semibold text-primary-light text-sm mb-8">Phone<span
+                                    <label for="end_time"
+                                        class="form-label fw-semibold text-primary-light text-sm mb-8">Waktu Selesai<span
                                             class="text-danger-600">*</span></label>
-                                    <input type="number" class="form-control radius-8" id="phone" name="phone"
-                                        value="{{ isset($datas) ? $datas->phone : '' }}" placeholder="input Phone...">
+                                    <input type="time" class="form-control radius-8" id="end_time" name="end_time"
+                                        value="{{ isset($datas) ? $datas->end_time : '' }}" placeholder="input Waktu Selesai...">
                                 </div>
 
                                 <div class="d-flex align-items-center justify-content-center gap-3">
@@ -81,7 +80,9 @@
 </div>
 
 @push('scripts')
-    <script></script>
+    <script>
+        
+    </script>
 @endpush
 
 @include('admin.partials.layouts.layoutBottom')

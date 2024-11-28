@@ -38,23 +38,6 @@
             <li class="dropdown">
                 <a href="javascript:void(0)">
                     <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
-                    <span>Students</span>
-                </a>
-                <ul class="sidebar-submenu">
-                    <li>
-                        <a href="{{ route('student.list') }}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            Students List</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('student.create') }}"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> Add
-                            Students</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="dropdown">
-                <a href="javascript:void(0)">
-                    <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
                     <span>Absence</span>
                 </a>
                 <ul class="sidebar-submenu">
@@ -72,19 +55,55 @@
             <li class="dropdown">
                 <a href="javascript:void(0)">
                     <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
-                    <span>Barcode</span>
+                    <span>Time Table</span>
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
-                        <a href="{{ route('barcode.list') }}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            Barcode List</a>
+                        <a href="{{ route('time-table.list') }}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            Time Table List</a>
                     </li>
                     <li>
-                        <a href="{{ route('barcode.create') }}"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> Add
-                            Barcode</a>
+                        <a href="{{ route('time-table.create') }}"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> Add
+                            Time Table</a>
                     </li>
                 </ul>
             </li>
+
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
+                    <span>Students</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('student.list') }}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            Students List</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('student.create') }}"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> Add
+                            Students</a>
+                    </li>
+                </ul>
+            </li>
+
+            
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
+                    <span>QrCode</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('qrcode.list') }}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                            QrCode List</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('qrcode.create') }}"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> Add
+                            QrCode</a>
+                    </li>
+                </ul>
+            </li>
+
             {{-- <li class="dropdown">
                 <a href="javascript:void(0)">
                     <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
