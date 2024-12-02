@@ -10,10 +10,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        // Retrieve all users from the database
-        $users = User::all(); // You can also use paginate() if you want to paginate the results
-
-        // Pass the users to the view
+        $users = User::orderBy('created_at', 'desc')->get();
         return view('admin.users.index', compact('users'));
     }
 
@@ -32,9 +29,11 @@ class UserController extends Controller
                 // Create a new User instance
                 $user = new User();
                 $user->nim = $datas['nim'];
+                $user->email = $datas['email'];
                 $user->name = $datas['name'];
                 $user->username = $datas['username'];
                 $user->password = Hash::make($datas['password']); // Hash the password
+                $user->phone = $datas['phone'];
                 $user->role = 'user'; // Optional: if you’re using 'role'
                 $user->save();
             }
@@ -74,4 +73,12 @@ class UserController extends Controller
             return redirect()->route('user.list')->with('error', 'User not found');
         }
     }
+
+
+    public function student_list(){
+        $datas = User::where('role', 'user')->orderBy('created_at', 'desc')->get();
+        return view('admin.students.index' , compact('datas'));
+    }
+
+    
 }

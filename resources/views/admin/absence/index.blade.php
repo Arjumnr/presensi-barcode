@@ -32,10 +32,11 @@
                             </div>
                         </th>
                         <th scope="col">NIM</th>
-                        <th scope="col">EMAIL</th>
                         <th scope="col">NAMA</th>
-                        <th scope="col">NO. HP</th>
-                        <th scope="col">TGL</th>
+                        <th scope="col">MATAKULIAH</th>
+                        <th scope="col">WAKTU</th>
+                        <th scope="col">DOSEN</th>
+                        <th scope="col">ABSEN </th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -49,11 +50,15 @@
                                         for="event{{ $data->id }}">{{ $loop->iteration }}</label>
                                 </div>
                             </td>
-                            <td><a href="javascript:void(0)" class="text-primary-600">{{ $data->nim }}</a></td>
-                            <td><a href="javascript:void(0)" class="text-black-600">{{ $data->email }}</a></td>
-                            <td><a href="javascript:void(0)" class="text-black-600">{{ $data->name }}</a></td>
-                            <td><a href="javascript:void(0)" class="text-black-600">{{ $data->phone }}</a></td>
-                            <td class="text-warning-600">{{ \Carbon\Carbon::parse($data->created_at)->format('d M Y') }}
+                            <td><a href="javascript:void(0)" class="text-primary-600">{{ $data->user->nim }}</a></td>
+                            <td><a href="javascript:void(0)" class="text-black-600">{{ $data->user->name }}</a></td>
+                            <td><a href="javascript:void(0)" class="text-black-600">{{ $data->timetable->matkul }}</a>
+                            <td><a href="javascript:void(0)" class="text-black-600">{{ $data->timetable->start_time }} - {{ $data->timetable->end_time }}</a>
+                            </td>
+                            <td><a href="javascript:void(0)" class="text-black-600">Andi Adhe Amalya</a></td>
+                            <td class="text-warning-600">
+                                {{ \Carbon\Carbon::parse($data->scanned_at)->format('H:i:s | d M Y ') ?? '-' }}
+                            </td>
                             </td>
                             <td>
 

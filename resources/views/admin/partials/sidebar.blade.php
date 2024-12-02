@@ -87,7 +87,7 @@
             </li>
 
             
-            <li class="dropdown">
+            {{-- <li class="dropdown">
                 <a href="javascript:void(0)">
                     <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
                     <span>QrCode</span>
@@ -102,7 +102,7 @@
                             QrCode</a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
 
             {{-- <li class="dropdown">
                 <a href="javascript:void(0)">

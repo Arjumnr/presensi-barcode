@@ -12,8 +12,19 @@ class ListPresent extends Model
     protected $table = 'list_present';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'id_student', 
+        'id_user', 
         'id_timetable', 
         'scanned_at'
     ];
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
+    public function timetable()
+    {
+        return $this->belongsTo(TimeTable::class, 'id_timetable');
+    }
 }

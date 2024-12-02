@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('id_user');
             $table->string('id_timetable');
-            $table->date('scanned_at');
+            $table->datetime('scanned_at');
             $table->timestamps();
             
         });

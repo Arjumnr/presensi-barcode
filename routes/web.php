@@ -23,7 +23,7 @@ Route::get('/auth/login', 'App\Http\Controllers\AuthController@index')->name('lo
 Route::post('/auth/login', 'App\Http\Controllers\AuthController@authenticate')->name('login.post');
 
 Route::get('/auth/register', 'App\Http\Controllers\AuthController@register')->name('register');
-Route::post('/auth/register', 'App\Http\Controllers\AuthController@registPost')->name('register.post');
+Route::post('/auth/register', 'App\Http\Controllers\UserController@store')->name('register.post');
 
 Route::get('/auth/logout', 'App\Http\Controllers\AuthController@logout')->name('logout');
 
@@ -34,12 +34,12 @@ Route::group(['prefix' => 'admin',  'namespace' => 'App\Http\Controllers',  'mid
     
 
     Route::group(['prefix' => 'student'], function () {
-        Route::get('/', 'App\Http\Controllers\StudentController@index')->name('student.list');
-        Route::get('/create', 'App\Http\Controllers\StudentController@create')->name('student.create');
-        Route::post('/store', 'App\Http\Controllers\StudentController@store')->name('student.store');
-        Route::get('/edit/{id}', 'App\Http\Controllers\StudentController@edit')->name('student.edit');
-        Route::put('/update/{id}', 'App\Http\Controllers\StudentController@update')->name('student.update');
-        Route::delete('/destroy/{id}', 'App\Http\Controllers\StudentController@destroy')->name('student.destroy');
+        Route::get('/', 'App\Http\Controllers\UserController@student_list')->name('student.list');
+        Route::get('/create', 'App\Http\Controllers\UserController@create')->name('student.create');
+        Route::post('/store', 'App\Http\Controllers\UserController@store')->name('student.store');
+        Route::get('/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('student.edit');
+        Route::put('/update/{id}', 'App\Http\Controllers\UserController@update')->name('student.update');
+        Route::delete('/destroy/{id}', 'App\Http\Controllers\UserController@destroy')->name('student.destroy');
     });
 
     Route::group(['prefix' => 'user'], function () {
@@ -59,6 +59,8 @@ Route::group(['prefix' => 'admin',  'namespace' => 'App\Http\Controllers',  'mid
         Route::get('/edit/{id}', 'App\Http\Controllers\AbsenceController@edit')->name('absence.edit');
         Route::put('/update/{id}', 'App\Http\Controllers\AbsenceController@update')->name('absence.update');
         Route::delete('/destroy/{id}', 'App\Http\Controllers\AbsenceController@destroy')->name('absence.destroy');
+
+        Route::get('/{id}', 'App\Http\Controllers\AbsenceController@absence')->name('absence');
     });
 
     Route::group(['prefix' => 'qrcode'], function () {

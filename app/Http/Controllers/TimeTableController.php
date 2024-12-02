@@ -7,6 +7,8 @@ use App\Models\TimeTable;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Type\Time;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Str;
+
 
 class TimeTableController extends Controller
 {
@@ -42,10 +44,19 @@ class TimeTableController extends Controller
 
     public function show($id)
     {
-        $id = encrypt($id);
-        $qr = QrCode::size(300)->generate('http://127.0.0.1:8000/admin/');
+        // Encode ID untuk keamanan
+        $encodedId = base64_encode($id);   
+        
+        // Gunakan fungsi url() agar URL dinamis
+        $url = url('admin/absence/' . $encodedId); 
+
+        // Generate QR Code
+        $qr = QrCode::size(300)->generate($url);
+
+        // Return ke view
         return view('admin.time-table.show', compact('qr'));
     }
+
 
     public function update(Request $request, $id)
     {

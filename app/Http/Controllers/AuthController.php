@@ -94,16 +94,12 @@ class AuthController extends Controller
                 $user->name = $datas['name'];
                 $user->username = $datas['username'];
                 $user->password = Hash::make($datas['password']); // Hash the password
+                $user->phone = $datas['phone'];
                 $user->role = 'user'; // Optional: if you’re using 'role'
+                $user->status = 1;
                 $user->save();
 
-                // Create a new Student instance
-                $student = new Students();
-                $student->nim = $datas['nim'];
-                $student->email = $datas['email'];
-                $student->name = $datas['name'];
-                $student->phone = $datas['phone'];
-                $student->save();
+                
 
                 // Redirect with success message
                 return redirect()->route('login')->with('success', 'Registration successful. Please log in.');
